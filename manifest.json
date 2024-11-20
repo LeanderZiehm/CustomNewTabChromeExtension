@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Custom New Tab",
+  "version": "1.0",
+  "description": "Override Chrome's new tab page with custom HTML content.",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "downloads"
+  ],
+  "icons": {
+    "512": "icon.png"
+  },
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "background": {"service_worker": "background.js"},
+
+   "action": {
+    "default_popup": "popup.html"
+  },
+
+ "commands": {
+    "open_new_tab": {
+      "suggested_key": {
+        "default": "Ctrl+Q"
+      },
+      "description": "Open a new tab"
+    }
+  }
+}

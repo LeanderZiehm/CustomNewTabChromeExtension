@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy Links</title>
+    <style>
+        body {
+            width: 200px;
+            font-family: Arial, sans-serif;
+            padding: 10px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h3>Copy All Links</h3>
+    <button id="copyLinks">Copy All Links to Clipboard</button>
+
+    <div id="container">
+        <button id="downloadFavicon">Download Current Favicon</button>
+        <div id="IconContainer"><img id="icon" src="" alt="" title=""></div>
+        <div id="MetaContainer">
+            <span class="label">URL:</span><span class="value" id="iconUrl"></span><br>
+            <span class="label">Height:</span><span class="value" id="iconHeight"></span><br>
+            <span class="label">Width:</span><span class="value" id="iconWidth"></span><br>
+            <span class="label">Debug:</span><span class="value" id="debug"></span><br>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
