@@ -41,7 +41,8 @@ const urls = [
        // ['notebooklm.png', 'https://notebooklm.google.com/notebook/e131e5f8-8f2a-46bd-9d68-01f257895f0d'],
        ['drawio.ico', 'https://app.diagrams.net/'],
        ['mermaid.svg', 'https://mermaid.live/'],
-        ['canva.ico', 'https://www.canva.com/?continue_in_browser=true'],
+        ['googleAnalytics.png', 'https://analytics.google.com/analytics/web/#/a288269016p446762083/admin/streams/table/'],
+        // ['canva.ico', 'https://www.canva.com/?continue_in_browser=true'],
        // ['discord.png', 'https://discord.com/channels/827903896402788363/1301889478738317354'],
 
        // ['scholar.ico', 'https://scholar.google.com/'],
