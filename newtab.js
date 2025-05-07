@@ -1,148 +1,503 @@
-const collumns = 9;
+const columns = 9;
 
-const urls = [
-    ['chatgpt.png', 'https://chatgpt.com/'],
-    ['usa-map.png', ' https://www.notion.so/USA-13f1a0e96a8e802f8b40cd4aacbd7d42'],
-     ['github.png', 'https://github.com/LeanderZiehm/Orakel'],
-
-   
-    ['youtube.png', 'https://www.youtube.com'],
-    // ['Notion-logo.svg', 'https://www.notion.so/Purpose-1031a0e96a8e807ebe14c5090237e4e7'],
-    ['Notion-logo.svg', 'https://www.notion.so/Research-ea5e3db5d84e4d9d98177e5ec60b998d'],
-    //['Notion-logo.svg', 'https://www.notion.so/Courses-AI-Uni-1231a0e96a8e80c590d4f675da83b8b1'],
-
-    ['targetBW.png', 'https://www.notion.so/Todo-1231a0e96a8e8065844ccd4b67cd454d'],
-           ['Notion-logo.svg', 'https://www.notion.so/Startups-Berlin-11f1a0e96a8e80c8b68cc46683aaf687'],
-    // ['UnitedaiB.png', 'https://www.notion.so/United-AI-1101a0e96a8e800ca3d7ee6061e21556'],
-    // ['canvaB.png', 'https://www.canva.com/design/DAGWFGJuvZo/z0L49gboov6zgHlFe602ug/edit?ui=eyJIIjp7IkEiOnRydWV9fQ&continue_in_browser=true'],//,'rgb(255,0,0)'
-   //,'rgb(255,0,0)'
-    // ['canvaB.png', 'https://www.canva.com/design?create=&type=TACQ-gtv2Yk&category=tAExRLg81RI&analyticsCorrelationId=50233cc8-0ec8-446f-a405-af8fff149381&continue_in_browser=true'],//,'rgb(255,0,0)'
-    // ['canvaB.png', 'https://www.canva.com/design/DAGTKt-IFnI/17WpcytroUNUw-jrsHuNlw/edit?ui=eyJIIjp7IkEiOnRydWV9fQ&success=true&continue_in_browser=true'],//,'rgb(255,0,0)'
-    ['drive.png', 'https://drive.google.com/drive/u/0/home'],
-    ['gmail.png', 'https://mail.google.com/mail/u/2/#inbox'],
-       ['whatsapp.png', 'https://web.whatsapp.com/'],
-    ['webmail.svg', 'https://webmail.th-deg.de/'],
-    ['docs.png', 'https://docs.google.com/document/u/0/create?usp=docs_home&ths=true'],
-    ['sheets.ico', 'https://docs.google.com/spreadsheets/d/19GpreitF3gIOwaUYq8pNkLXWecOVei-6g0J_nXW6o24/edit?gid=0#gid=0'],
-     // ['sheets.ico', 'https://docs.google.com/spreadsheets/u/0/create?usp=chrome_actions'],
-   
-    ['upwork.png', 'https://www.upwork.com/freelance-jobs/data-science/?category2_uid=531770282580668422&q=Data%20Science&sort=recency&subcategory2_uid=531770282597445634'],
-    // ['upwork.png', 'https://www.upwork.com/freelance-jobs/artificial-intelligence/'],
-    // ['fiverr.png', 'https://www.fiverr.com/search/gigs?query=artificial%20intelligence&source=top-bar&acmpl=1&search_in=everywhere&search-autocomplete-original-term=artific&search-autocomplete-available=true&search-autocomplete-type=suggest&search-autocomplete-position=1&ref_ctx_id=fc46e9e41ebf4f39a6331c23fe7ad9a1'],
-    // ['idea.png', 'https://www.notion.so/Project-Ideas-1171a0e96a8e8049874ee7c137a61e39'],
-   
-    // ['idea.png', 'https://www.office.com/launch/Visio/','rgb(0,0,0)'],
-    // ['thdD.png', 'https://ilearn.th-deg.de/','rgb(0,0,0)'],
-    // ['Notion-logo.svg', 'https://www.notion.so/Courses-AI-Uni-1231a0e96a8e80c590d4f675da83b8b1?showMoveTo=true&saveParent=true'],
-    // ['Notion-logo.svg', ' https://www.notion.so/THD-Internship-Project-431a5fcdb3554e2db86fc74ac0ff9fc9'],
-    ['thdD.png', 'https://pmit-int.th-deg.de/shkzeiterfassung/'],
-    // ['thdD.png', 'https://ilearn.th-deg.de/my/'],
- 
-       // ['notebooklm.png', 'https://notebooklm.google.com/notebook/e131e5f8-8f2a-46bd-9d68-01f257895f0d'],
-       ['drawio.ico', 'https://app.diagrams.net/'],
-       ['mermaid.svg', 'https://mermaid.live/'],
-        ['googleAnalytics.png', 'https://analytics.google.com/analytics/web/#/a288269016p446762083/admin/streams/table/'],
-        // ['canva.ico', 'https://www.canva.com/?continue_in_browser=true'],
-       // ['discord.png', 'https://discord.com/channels/827903896402788363/1301889478738317354'],
-
-       // ['scholar.ico', 'https://scholar.google.com/'],
-       // ['calendar.ico', 'https://calendar.notion.so/'],
-
-
-
-   
+// Default URLs list
+const defaultUrls = [
+  ['https://web.whatsapp.com/', 'whatsapp.png'],
+  ['https://chatgpt.com/', 'chatgpt.png'],
+  ['https://www.notion.so', 'Notion-logo.svg'],
+  ['https://mail.google.com/mail/u/0/#inbox', 'gmail.png'],
+  ['https://ogmp3.cc/5/', 'ogmp3.ico'],
+  ['https://github.com/LeanderZiehm', 'github.png'],
+  ['https://mygit.th-deg.de/', 'gitlab.png'],
+  ['https://discord.com/channels/1330143467828940840/1330499170716352534', 'discord.png'],
+  ['https://webmail.th-deg.de/', 'webmail.svg'],
+  ['https://ilearn.th-deg.de/my/', 'thdD.png'],
+  ['https://www.youtube.com/', 'youtube.png'],
+  ['https://claude.ai/new', 'sonet.ico'],
+  ['https://notebooklm.google.com/notebook/e131e5f8-8f2a-46bd-9d68-01f257895f0d', 'notebooklm.png'],
+  ['https://aistudio.google.com/prompts/new_chat', 'ai_studio.png'],
+  ['https://www.canva.com/'],
+  'https://www.kaggle.com/',
+  'https://wakatime.com/dashboard',
+  'https://www.mermaidchart.com/play'
 ];
 
-async function recolorImage(imageSrc, overlayColor) {
-    return new Promise((resolve) => {
-        const img = new Image();
-        img.src = 'icons/' + imageSrc;
-
-        img.onload = () => {
-            const canvas = document.createElement('canvas');
-            canvas.width = img.width;
-            canvas.height = img.height;
-            const ctx = canvas.getContext('2d');
-
-            ctx.drawImage(img, 0, 0);
-            ctx.globalCompositeOperation = 'source-atop'; // Overlay the color
-            ctx.fillStyle = overlayColor; // Use the specified color
-            ctx.fillRect(0, 0, img.width, img.height); // Fill the canvas with the color
-
-            resolve(canvas.toDataURL()); // Return the new image as a data URL
-        };
-    });
+// Load URLs from localStorage or use defaults
+function loadUrls() {
+  const savedUrls = localStorage.getItem('customUrls');
+  return savedUrls ? JSON.parse(savedUrls) : defaultUrls;
 }
 
-async function createButtons(urls) {
-    var container = document.getElementById("container");
-    for (let i = 0; i < urls.length; i++) {
-        const [imageSrc, link, overlayColor] = urls[i];
+let urls = loadUrls();
 
-        const linkElement = document.createElement('a');
-        linkElement.href = link;
-        linkElement.target = '_blank';
-        linkElement.id = "" + (i + 1);
-        linkElement.style.position = 'relative'; // Required for absolute positioning of overlay
+function getFaviconUrl(siteUrl, size = 64) {
+  const { hostname } = new URL(siteUrl);
+  return `https://www.google.com/s2/favicons?sz=${size}&domain=${hostname}`;
+}
 
-        const img = document.createElement('img');
-        img.style.display = 'block'; // Ensures the image fills the linkElement
+function createContainer() {
+  const container = document.createElement('div');
+  container.id = 'container';
+  document.body.appendChild(container);
+  return container;
+}
 
-        // If overlayColor is specified, recolor the image
-        if (overlayColor) {
-            const recoloredImageSrc = await recolorImage(imageSrc, overlayColor);
-            img.src = recoloredImageSrc; // Use the recolored image
-        } else {
-            img.src = 'icons/' + imageSrc; // Use the original image
-        }
+function createControlButtons() {
+  // Container for control buttons
+  const controlContainer = document.createElement('div');
+  controlContainer.id = 'controlContainer';
+  controlContainer.style.position = 'fixed';
+  controlContainer.style.top = '20px';
+  controlContainer.style.right = '20px';
+  controlContainer.style.display = 'flex';
+  controlContainer.style.gap = '15px';
+  controlContainer.style.zIndex = '1000';
+  
+  // Add button
+  const addButton = document.createElement('button');
+  addButton.id = 'addButton';
+  addButton.innerHTML = '+';
+  addButton.style.width = '50px';
+  addButton.style.height = '50px';
+  addButton.style.borderRadius = '25px';
+  addButton.style.backgroundColor = 'rgba(150, 10, 255, 0.7)';
+  addButton.style.color = 'white';
+  addButton.style.fontSize = '24px';
+  addButton.style.fontWeight = 'bold';
+  addButton.style.border = 'none';
+  addButton.style.cursor = 'pointer';
+  addButton.style.boxShadow = '5px 5px 15px rgba(150, 10, 255, 0.5)';
+  addButton.hidden = true;
+  
+  addButton.addEventListener('click', showAddLinkPopup);
+  
+  const editIconPath = "edit.png"
+  const editIcon = document.createElement('img');
+  editIcon.src = editIconPath;
+  editIcon.alt = 'Edit';
+  editIcon.style.width = '45%';  // Adjust size to fit the button
+  editIcon.style.height = '45%';
+  editIcon.style.objectFit = 'contain';
+  editIcon.style.pointerEvents = 'none'; // Prevent the image from blocking button clicks
+  editIcon.style.margin = '0px';
+  editIcon.style.filter = 'invert(1)';
 
-        linkElement.appendChild(img);
-        container.appendChild(linkElement);
+  // Edit toggle button
+  const editToggle = document.createElement('button');
+  editToggle.id = 'editToggle';
+  editToggle.appendChild(editIcon);
+
+  // editToggle.innerHTML = '✏️'.replace('\uFE0F', '\uFE0E');  // Forces black-and-white
+  editToggle.style.width = '50px';
+  editToggle.style.height = '50px';
+  editToggle.style.borderRadius = '25px';
+  editToggle.style.backgroundColor = 'rgba(150, 10, 255, 0.7)';
+  editToggle.style.color = 'white';
+  editToggle.style.fontSize = '20px';
+  editToggle.style.border = 'none';
+  editToggle.style.cursor = 'pointer';
+  editToggle.style.boxShadow = '5px 5px 15px rgba(150, 150, 150, 0.5)';
+  editToggle.dataset.active = 'false';
+  editToggle.style.padding = '0px';
+
+  
+  editToggle.addEventListener('click', () => {
+    const isActive = editToggle.dataset.active === 'true';
+    editToggle.dataset.active = isActive ? 'false' : 'true';
+    
+    if (editToggle.dataset.active === 'true') {
+      editToggle.style.backgroundColor = 'rgba(150, 150, 150, 0.7)';
+      editToggle.style.boxShadow = '5px 5px 15px rgba(255, 165, 0, 0.5)';
+      addButton.hidden = false;
+    } else {
+      editToggle.style.backgroundColor = 'rgba(150, 10, 255, 0.7)';
+      editToggle.style.boxShadow = '5px 5px 15px rgba(150, 150, 150, 0.5)';
+      addButton.hidden = true;
     }
+    
+    // Refresh buttons to update delete button visibility
+    createButtons(urls);
+  });
+  
+  controlContainer.appendChild(addButton);
+  controlContainer.appendChild(editToggle);
+  document.body.appendChild(controlContainer);
+}
+
+function createButtons(urls) {
+  const container = document.getElementById('container');
+  container.innerHTML = ''; // Clear existing buttons
+  
+  urls.forEach((entry, i) => {
+    let link, localIcon = null;
+
+    if (typeof entry === 'string') {
+      link = entry;
+    } else if (Array.isArray(entry)) {
+      link = entry[0];
+      if (entry.length > 1) {
+        localIcon = entry[1];
+      }
+    }
+
+    const a = document.createElement('a');
+    a.href = link;
+    a.target = '_blank';
+    a.id = String(i + 1);
+    a.style.position = 'relative';
+    // a styles
+    a.style.padding = '20px';
+    a.style.textAlign = 'center';
+    a.style.backgroundColor = 'rgba(150,10,255,0.3)';
+    a.style.color = '#fff';
+    a.style.border = 'none';
+    a.style.cursor = 'pointer';
+    a.style.borderRadius = '20px';
+    a.style.width = '45px';
+    a.style.height = '45px';
+    a.style.fontSize = '100%';
+    a.style.fontWeight = 'bold';
+    a.style.background = 'linear-gradient(135deg, rgba(150,10,255,0.5) 0%, rgba(255,0,255,0.5) 100%)';
+    a.style.boxShadow = '10px 10px 30px rgba(150, 10, 255, 0.5)';
+    a.style.display = 'flex';
+    a.style.justifyContent = 'center';
+    a.style.alignItems = 'center';
+
+    const img = document.createElement('img');
+    img.style.display = 'block';
+    // img styles
+    img.style.width = '100%';
+    img.style.height = '100%';
+    img.style.objectFit = 'contain';
+
+    img.alt = extractMainDomain(link);
+
+    if (localIcon) {
+      img.src = `icons/${localIcon}`;
+    } else {
+      img.src = getFaviconUrl(link);
+    }
+
+    a.appendChild(img);
+    
+    // Add delete button
+    const deleteBtn = document.createElement('button');
+    deleteBtn.innerHTML = '×';
+    deleteBtn.style.position = 'absolute';
+    deleteBtn.style.top = '-10px';
+    deleteBtn.style.right = '-10px';
+    deleteBtn.style.backgroundColor = 'rgba(255, 0, 0, 0.7)';
+    deleteBtn.style.color = 'white';
+    deleteBtn.style.borderRadius = '50%';
+    deleteBtn.style.width = '24px';
+    deleteBtn.style.height = '24px';
+    deleteBtn.style.border = 'none';
+    deleteBtn.style.cursor = 'pointer';
+    deleteBtn.style.display = 'none';
+    deleteBtn.style.alignItems = 'center';
+    deleteBtn.style.justifyContent = 'center';
+    deleteBtn.style.fontSize = '14px';
+    deleteBtn.style.fontWeight = 'bold';
+    
+    deleteBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      showDeleteConfirmation(i);
+    });
+    
+    // Only show delete button on hover if edit mode is active
+    a.addEventListener('mouseover', () => {
+      const editToggle = document.getElementById('editToggle');
+      if (editToggle && editToggle.dataset.active === 'true') {
+        deleteBtn.style.display = 'flex';
+      }
+    });
+    
+    a.addEventListener('mouseout', () => {
+      deleteBtn.style.display = 'none';
+    });
+    
+    a.appendChild(deleteBtn);
+    container.appendChild(a);
+  });
+}
+
+function showAddLinkPopup() {
+  // Create overlay
+  const overlay = document.createElement('div');
+  overlay.id = 'overlay';
+  overlay.style.position = 'fixed';
+  overlay.style.top = '0';
+  overlay.style.left = '0';
+  overlay.style.width = '100%';
+  overlay.style.height = '100%';
+  overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+  overlay.style.display = 'flex';
+  overlay.style.justifyContent = 'center';
+  overlay.style.alignItems = 'center';
+  overlay.style.zIndex = '2000';
+  
+  // Create popup
+  const popup = document.createElement('div');
+  popup.id = 'addLinkPopup';
+  popup.style.backgroundColor = '#222';
+  popup.style.padding = '30px';
+  popup.style.borderRadius = '20px';
+  popup.style.width = '400px';
+  popup.style.boxShadow = '0 0 30px rgba(150, 10, 255, 0.7)';
+  popup.style.position = 'relative';
+  
+  // Close button
+  const closeBtn = document.createElement('button');
+  closeBtn.innerHTML = '×';
+  closeBtn.style.position = 'absolute';
+  closeBtn.style.top = '10px';
+  closeBtn.style.right = '10px';
+  closeBtn.style.backgroundColor = 'transparent';
+  closeBtn.style.color = 'white';
+  closeBtn.style.border = 'none';
+  closeBtn.style.fontSize = '24px';
+  closeBtn.style.cursor = 'pointer';
+  closeBtn.addEventListener('click', () => document.body.removeChild(overlay));
+  
+  // Title
+  const title = document.createElement('h2');
+  title.innerHTML = 'Add New Link';
+  title.style.color = 'white';
+  title.style.marginTop = '0';
+  title.style.marginBottom = '20px';
+  title.style.textAlign = 'center';
+  
+  // URL input
+  const urlLabel = document.createElement('label');
+  urlLabel.innerHTML = 'URL:';
+  urlLabel.style.color = 'white';
+  urlLabel.style.display = 'block';
+  urlLabel.style.marginBottom = '5px';
+  
+  const urlInput = document.createElement('input');
+  urlInput.type = 'text';
+  urlInput.placeholder = 'https://example.com';
+  urlInput.style.width = '100%';
+  urlInput.style.padding = '10px';
+  urlInput.style.marginBottom = '20px';
+  urlInput.style.backgroundColor = '#333';
+  urlInput.style.border = '1px solid #555';
+  urlInput.style.borderRadius = '5px';
+  urlInput.style.color = 'white';
+  urlInput.style.boxSizing = 'border-box';
+  
+  // Submit button
+  const submitBtn = document.createElement('button');
+  submitBtn.innerHTML = 'Add Link';
+  submitBtn.style.backgroundColor = 'rgba(150, 10, 255, 0.7)';
+  submitBtn.style.color = 'white';
+  submitBtn.style.padding = '10px 20px';
+  submitBtn.style.border = 'none';
+  submitBtn.style.borderRadius = '5px';
+  submitBtn.style.cursor = 'pointer';
+  submitBtn.style.width = '100%';
+  submitBtn.addEventListener('click', () => {
+    const url = urlInput.value.trim();
+    if (url && isValidUrl(url)) {
+      addNewLink(url);
+      document.body.removeChild(overlay);
+    } else {
+      alert('Please enter a valid URL');
+    }
+  });
+  
+  // Build popup
+  popup.appendChild(closeBtn);
+  popup.appendChild(title);
+  popup.appendChild(urlLabel);
+  popup.appendChild(urlInput);
+  popup.appendChild(submitBtn);
+  
+  // Add popup to overlay
+  overlay.appendChild(popup);
+  document.body.appendChild(overlay);
+  
+  // Focus URL input
+  setTimeout(() => urlInput.focus(), 100);
+}
+
+function isValidUrl(string) {
+  try {
+    new URL(string);
+    return true;
+  } catch (_) {
+    return false;
+  }
+}
+
+function addNewLink(url) {
+  urls.push(url);
+  saveUrls();
+  createButtons(urls);
+}
+
+function saveUrls() {
+  localStorage.setItem('customUrls', JSON.stringify(urls));
 }
 
 function goTo(url, openInNewTab = true) {
-    if (openInNewTab) {
-        chrome.tabs.create({ url: url });
-    } else {
-        chrome.tabs.update({ url: url });
-    }
+  if (openInNewTab) {
+    chrome.tabs.create({ url });
+  } else {
+    chrome.tabs.update({ url });
+  }
 }
 
 function extractMainDomain(url) {
-    var domain = url.replace(/(^\w+:|^)\/\//, '');
-    var mainDomain = domain.split('/')[0];
-    mainDomain = mainDomain.replace('www.', '');
-    mainDomain = mainDomain.split('.')[0];
-    return mainDomain;
+  try {
+    const hostname = new URL(url).hostname;
+    return hostname.replace(/^www\./, '').split('.')[0];
+  } catch (e) {
+    return 'unknown';
+  }
+}
+
+function showDeleteConfirmation(index) {
+  // Get the link info
+  const entry = urls[index];
+  const link = Array.isArray(entry) ? entry[0] : entry;
+  const siteName = extractMainDomain(link);
+  
+  // Create overlay
+  const overlay = document.createElement('div');
+  overlay.id = 'confirmOverlay';
+  overlay.style.position = 'fixed';
+  overlay.style.top = '0';
+  overlay.style.left = '0';
+  overlay.style.width = '100%';
+  overlay.style.height = '100%';
+  overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+  overlay.style.display = 'flex';
+  overlay.style.justifyContent = 'center';
+  overlay.style.alignItems = 'center';
+  overlay.style.zIndex = '2000';
+  
+  // Create popup
+  const popup = document.createElement('div');
+  popup.id = 'confirmPopup';
+  popup.style.backgroundColor = '#222';
+  popup.style.padding = '30px';
+  popup.style.borderRadius = '20px';
+  popup.style.width = '400px';
+  popup.style.boxShadow = '0 0 30px rgba(255, 50, 50, 0.7)';
+  popup.style.position = 'relative';
+  
+  // Close button
+  const closeBtn = document.createElement('button');
+  closeBtn.innerHTML = '×';
+  closeBtn.style.position = 'absolute';
+  closeBtn.style.top = '10px';
+  closeBtn.style.right = '10px';
+  closeBtn.style.backgroundColor = 'transparent';
+  closeBtn.style.color = 'white';
+  closeBtn.style.border = 'none';
+  closeBtn.style.fontSize = '24px';
+  closeBtn.style.cursor = 'pointer';
+  closeBtn.addEventListener('click', () => document.body.removeChild(overlay));
+  
+  // Title
+  const title = document.createElement('h2');
+  title.innerHTML = 'Confirm Deletion';
+  title.style.color = 'white';
+  title.style.marginTop = '0';
+  title.style.marginBottom = '20px';
+  title.style.textAlign = 'center';
+  
+  // Message
+  const message = document.createElement('p');
+  message.innerHTML = `Are you sure you want to remove <strong>${siteName}</strong> from your shortcuts?`;
+  message.style.color = 'white';
+  message.style.marginBottom = '30px';
+  message.style.textAlign = 'center';
+  
+  // Button container
+  const buttonContainer = document.createElement('div');
+  buttonContainer.style.display = 'flex';
+  buttonContainer.style.justifyContent = 'space-between';
+  buttonContainer.style.gap = '20px';
+  
+  // Cancel button
+  const cancelBtn = document.createElement('button');
+  cancelBtn.innerHTML = 'Cancel';
+  cancelBtn.style.flex = '1';
+  cancelBtn.style.padding = '10px';
+  cancelBtn.style.backgroundColor = '#444';
+  cancelBtn.style.color = 'white';
+  cancelBtn.style.border = 'none';
+  cancelBtn.style.borderRadius = '5px';
+  cancelBtn.style.cursor = 'pointer';
+  cancelBtn.addEventListener('click', () => document.body.removeChild(overlay));
+  
+  // Confirm button
+  const confirmBtn = document.createElement('button');
+  confirmBtn.innerHTML = 'Delete';
+  confirmBtn.style.flex = '1';
+  confirmBtn.style.padding = '10px';
+  confirmBtn.style.backgroundColor = 'rgba(255, 50, 50, 0.8)';
+  confirmBtn.style.color = 'white';
+  confirmBtn.style.border = 'none';
+  confirmBtn.style.borderRadius = '5px';
+  confirmBtn.style.cursor = 'pointer';
+  confirmBtn.addEventListener('click', () => {
+    urls.splice(index, 1);
+    saveUrls();
+    createButtons(urls);
+    document.body.removeChild(overlay);
+  });
+  
+  // Add elements to popup
+  buttonContainer.appendChild(cancelBtn);
+  buttonContainer.appendChild(confirmBtn);
+  
+  popup.appendChild(closeBtn);
+  popup.appendChild(title);
+  popup.appendChild(message);
+  popup.appendChild(buttonContainer);
+  
+  overlay.appendChild(popup);
+  document.body.appendChild(overlay);
 }
 
 function main() {
-    window.focus();
+  window.focus();
 
-    document.querySelector('#container').style.gridTemplateColumns = `repeat(${collumns}, 1fr)`;
-    createButtons(urls);
+  document.body.style.backgroundColor = 'rgba(0, 0, 0, 1)';
+  document.body.style.display = 'flex';
+  document.body.style.flexDirection = 'column';
+  document.body.style.justifyContent = 'center'; // center vertically
+  document.body.style.alignItems = 'center'; // center horizontally
+  document.body.style.height = '100vh';
+  document.body.style.margin = '0';
+  document.body.style.fontFamily = 'Arial, sans-serif';
 
-    document.getElementById('search').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            e.preventDefault(); // Prevent form submission
-            var query = this.value.trim();
-            this.value = '';
-            if (query !== '') {
-                url = 'https://www.google.com/search?q=' + encodeURIComponent(query);
-                goTo(url);
-            }
-        }
-    });
+  createContainer();
+  createControlButtons();
 
-    document.addEventListener('keydown', function (e) {
-        var key = e.key;
-        if (!isNaN(key) && key > 0 && key <= urls.length) {
-            goTo(urls[key - 1][1]);
-        }
-    });
+  const container = document.getElementById('container');
+  container.style.display = 'grid';
+  container.style.gridTemplateColumns = 'repeat(8, 1fr)';
+  container.style.gridTemplateRows = 'repeat(auto-fill, 1fr)';
+  container.style.gap = '55px';
+  container.style.justifyContent = 'center';
+  container.style.alignItems = 'center';
+  container.style.margin = '50px 0';
+
+  createButtons(urls);
+
+  document.addEventListener('keydown', e => {
+    const n = Number(e.key);
+    if (n >= 1 && n <= urls.length) {
+      const entry = urls[n - 1];
+      const link = Array.isArray(entry) ? entry[0] : entry;
+      goTo(link);
+    }
+  });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    main();
-});
+document.addEventListener('DOMContentLoaded', main);

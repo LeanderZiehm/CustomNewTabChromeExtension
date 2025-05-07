@@ -200,3 +200,16 @@ function clearPopup() {
 function getFileName(path) {
     return path.split('/').pop();
 }
+
+
+
+document.getElementById('open-links').addEventListener('click', () => {
+  const urls = document.getElementById('urls').value.split('\n');
+  urls.forEach((url) => {
+    const trimmedUrl = url.trim();
+    if (trimmedUrl) {
+      const validUrl = /^https?:\/\//.test(trimmedUrl) ? trimmedUrl : `https://${trimmedUrl}`;
+      chrome.tabs.create({ url: validUrl });
+    }
+  });
+});
